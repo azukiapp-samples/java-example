@@ -1,13 +1,9 @@
-This quickstart will get you going with Java and the [Jetty](http://eclipse.org/jetty/) embedded web server, deployed to Heroku.
-
-{.note}
-Sample code for the [Java demo application](https://github.com/heroku/devcenter-java) is available on GitHub. Edits and enhancements are welcome.
+This quickstart will get you going with Java and the [Jetty](http://eclipse.org/jetty/) embedded web server.
 
 ## Prerequisites
 
 * Basic Java knowledge, including an installed version of the JVM and [Maven 3](http://maven.apache.org/download.html).
 * Your application must run on the [OpenJDK](http://openjdk.java.net/) version 6, or 7 (8 is also available in beta).
-* A Heroku user account.  [Signup is free and instant.](https://api.heroku.com/signup/devcenter)
 
 ## Local workstation setup
 
@@ -19,16 +15,16 @@ Once installed, you can use the `heroku` command from your command shell.  Log i
     $ heroku login
     Enter your Heroku credentials.
     Email: adam@example.com
-    Password: 
+    Password:
     Could not find an existing public key.
-    Would you like to generate one? [Yn] 
+    Would you like to generate one? [Yn]
     Generating new SSH public key.
     Uploading ssh public key /Users/adam/.ssh/id_rsa.pub
 
 Press enter at the prompt to upload your existing `ssh` key or create a new one, used for pushing code later on.
 
 ## Write your app
-    
+
 You can run any Java application on Heroku that uses Maven as build tool. As an example, we will write a web app using Jetty. Here is a basic servlet class that also contains a main method to start up the application:
 
 ### src/main/java/HelloWorld.java
@@ -55,7 +51,7 @@ You can run any Java application on Heroku that uses Maven as build tool. As an 
             server.setHandler(context);
             context.addServlet(new ServletHolder(new HelloWorld()),"/*");
             server.start();
-            server.join();   
+            server.join();
         }
     }
 
@@ -67,8 +63,8 @@ Cedar recognizes Java apps by the existence of a `pom.xml` file. Here's an examp
 
     :::xml
     <?xml version="1.0" encoding="UTF-8"?>
-    <project xmlns="http://maven.apache.org/POM/4.0.0" 
-             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    <project xmlns="http://maven.apache.org/POM/4.0.0"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
              xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
         <modelVersion>4.0.0</modelVersion>
         <groupId>com.example</groupId>
@@ -141,7 +137,7 @@ You should now see something similar to:
     2012-01-31 15:51:21.931:INFO:oejsh.ContextHandler:started o.e.j.s.ServletContextHandler{/,null}
     2012-01-31 15:51:21.971:INFO:oejs.AbstractConnector:Started SelectChannelConnector@0.0.0.0:5000
 
-Open the app in your browser:  
+Open the app in your browser:
 [http://localhost:5000](http://localhost:5000)
 
 
@@ -202,7 +198,7 @@ Deploy your code:
     -----> Installing settings.xml... done
     -----> executing /app/tmp/repo.git/.cache/.maven/bin/mvn -B -Duser.home=/tmp/build_3k0p14ghrmdzs -Dmaven.repo.local=/app/tmp/repo.git/.cache/.m2/repository -s /app/tmp/repo.git/.cache/.m2/settings.xml -DskipTests=true clean install
            [INFO] Scanning for projects...
-           [INFO]                                                                         
+           [INFO]
            [INFO] ------------------------------------------------------------------------
            [INFO] Building helloworld 1.0-SNAPSHOT
            [INFO] ------------------------------------------------------------------------
@@ -224,9 +220,9 @@ Now, let's check the state of the app's processes:
 
     :::term
     $ heroku ps
-    Process  State       Command                               
-    -------  ----------  ------------------------------------  
-    web.1    up for 10s  java -cp target/classes:target/dep..  
+    Process  State       Command
+    -------  ----------  ------------------------------------
+    web.1    up for 10s  java -cp target/classes:target/dep..
 
 The web process is up.  Review the logs for more information:
 
